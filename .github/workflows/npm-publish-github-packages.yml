@@ -17,7 +17,7 @@ jobs:
     - name: Check if React app is running
       run: |
           pm2 list > pm2_list.txt
-          if grep -q "your_app_name" pm2_list.txt; then
+          if grep -q "client" pm2_list.txt; then
             echo "Your Node.js app is running. Stopping it..."
             pm2 stop client
             pm2 delete client
