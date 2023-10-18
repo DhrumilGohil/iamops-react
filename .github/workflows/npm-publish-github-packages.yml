@@ -16,7 +16,7 @@ jobs:
       run: npm install --force
 
     - name: Start React App
-      run: pm2 start npm --name "my-react-app" -- start
+      run: pm2 start npm --name "client" -- start
 
     - name: Save PM2 process list
       run: pm2 list
