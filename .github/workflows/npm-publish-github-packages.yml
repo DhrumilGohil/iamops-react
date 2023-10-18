@@ -12,10 +12,14 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    - name: Copy repository to runner
-      run: |
-        # Create a directory to copy the repository to
-        ls
-        pwd
-        npm install --force
-        pm2 start src/App.js
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build React App
+      run: npm run build
+
+    - name: Start React App
+      run: pm2 start npm --name "my-react-app" -- start
+
+    - name: Save PM2 process list
+      run: pm2 list
