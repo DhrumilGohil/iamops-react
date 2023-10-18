@@ -17,5 +17,5 @@ jobs:
         # Create a directory to copy the repository to
         ls
         pwd
-        npm install
+        npm install --force
         pm2 start src/App.js
