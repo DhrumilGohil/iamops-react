@@ -1,0 +1,21 @@
+name: Copy Repository to Hosted Runner
+
+on:
+  push:
+    branches:
+      - main # Replace with your desired branch
+
+jobs:
+  copy-repo:
+    runs-on: self-hosted # You can choose a different runner if needed
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Copy repository to runner
+      run: |
+        # Create a directory to copy the repository to
+        ls
+        pwd
+        npm install
+        pm2 start src/App.js
