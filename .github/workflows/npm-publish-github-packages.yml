@@ -23,9 +23,6 @@ jobs:
             echo "Your Node.js app is running. Stopping it..."
             pm2 stop client
             pm2 delete client
-            echo "Your Node.js app has been stopped."
-          else
-            echo "Your Node.js app is not running."
           fi
 
     - name: Start React App
