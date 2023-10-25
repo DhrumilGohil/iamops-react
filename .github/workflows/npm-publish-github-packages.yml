@@ -1,4 +1,4 @@
-name: Copy Repository to Hosted Runner
+name: Deploy ReactJs Application
 
 on:
   push:
@@ -12,12 +12,14 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    - name: Install dependencies
+
+    - name: Install Dependencies
       run: npm install --force
+
     - name: Check if React app is running
       run: |
           pm2 list > pm2_list.txt
-          if grep -q "client" pm2_list.txt; then
+          if grep -wq "client" pm2_list.txt; then
             echo "Your Node.js app is running. Stopping it..."
             pm2 stop client
             pm2 delete client
@@ -25,6 +27,7 @@ jobs:
           else
             echo "Your Node.js app is not running."
           fi
+
     - name: Start React App
       run: pm2 start npm --name "client" -- start
 
